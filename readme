@@ -1,0 +1,29 @@
+Problem:
+I want to look at supply/demand pricing for concert tickets on Facebook Events (ex: Illenium @ https://www.facebook.com/events/544776045974663/) by using the community's posts. 
+
+Approaches:
+1) In order to pull the discussion data for Facebook Events, you need to use Facebook's Graph API and request permission from the event Admin. I didn't want to contact and wait for Illenium's approval, so I moved on to another approach.
+
+2) Python has a web scraping tool called Beautiful Soup. However, Facebook hides the discussion posts in a "hidden_elem" class, so Beautiful Soup isn't able to extract the data.
+
+3) I was still curious, and didn't want to walk away from this project without doing anything, so I just used a simple copy+paste of the page source code.
+
+Data work:
+After copying and pasting the hidden_elem class of FB's source code, I cleaned the messy HTML data using simple Python and Regex expressions. 
+
+I counted the total ticket offerings, ticket asks, and calculated the average price of each. 
+
+Results:
+Initially, I was hopeful for high demand, because that meant I could sell my ticket for a high price. However, the most recent posts showed a supply of 20 tickets with an average ask price of $73, and only 4 tickets in demand with no ask price at all.
+
+It looks like supply is much greater than demand at the moment.
+
+Ways to improve:
+This was a 3-4 hour project with lots of potential improvements to be made.
+
+I would love to find a way to populate the supply/demand count and price in real-time. This would require interaction with FB's Graph API and permission from the event Admin. With this, I would love to display a time-series chart of supply/demand strength and price over time. For example, if it looks like demand is continually increasing as the event date nears (analyzed across thousands of events), it would be a good idea to wait to sell the ticket. 
+
+I could also create price alerts and notifications for your target range (as a consumer, if ticket prices are dropping below $30 for supply, message me | as a reseller, if ticket prices are rising above $100 for demand, message me).
+
+There are also more optimal ways the ticket price/count could be extracted from the text data. The demand_counter function can also be highly improved. I could also modularize the code into .py files so everything isn't in Jupyter as well, but this was just a quick experiment/analysis!
+
